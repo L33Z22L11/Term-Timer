@@ -1,3 +1,334 @@
-<script type="text/javascript">
-window.location.href="http://do.ourhome.work/timer.html"
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>学期计时板</title>
+
+    <style>
+      * {
+        /* border: 1px solid red; */
+        margin: 0 auto;
+        padding: 0;
+        text-align: left;
+        text-shadow: 2px 2px 2px var(--shadow)/*, 
+        1px 0 var(--auto-color), -1px 0 var(--auto-color), 
+        0 1px var(--auto-color), 0 -1px var(--auto-color), 
+        1px -1px var(--auto-color), -1px 1px var(--auto-color), 
+        1px 1px var(--auto-color), -1px -1px var(--auto-color)*/;
+      }
+      :root {
+        --auto-color: #444;
+        --light-color: #fff;
+        --primary-color: #4bf;
+        --accent-color: #07f;
+        --dark-color: #87f;
+        --shadow: rgba(0, 0, 0, 0.3);
+      }
+      html {
+        width: 100%;
+        min-height: 100%;
+        background: #eee;
+        color: var(--auto-color);
+        font-size: 100%;
+      }
+      a {
+        color: var(--auto-color);
+        text-decoration: none;
+      }
+      .nmg {
+        margin: 0 !important;
+      }
+      .c {
+        text-align: center;
+      }
+      .flex {
+        display: flex;
+        align-items: center;
+      }
+      .ib {
+        display: inline-block;
+      }
+      #tab { 
+        word-break: break-all;
+        white-space: nowrap;
+        overflow: scroll;
+      }
+      .fl {
+        float: left;
+      }
+      .fr {
+        float: right;
+      }
+      .left-bottom {
+        position: fixed;
+        z-index: 924; 
+        right: 8%;
+        bottom: 10%;
+      }
+      /*纸鹿-分割线-box*/
+      .container {
+        margin: 0 auto;
+        width: 90%;
+        max-width: 720px;
+      }
+      .container > * {
+        margin: .8em auto;
+      }
+      .banner {
+        padding: 5em 1em 1em;
+        background: linear-gradient(
+          120deg,
+          var(--primary-color),
+          var(--dark-color)
+        );
+        color: var(--light-color);
+      }
+      .box {
+        padding: .8em 1.2em;
+        display: block;
+        background: linear-gradient(
+          120deg,
+          var(--primary-color),
+          var(--dark-color)
+        );
+        border-radius: 1.5em;
+        box-shadow: var(--shadow) .2em .2em .5em;
+        color: var(--light-color);
+        overflow: hidden; 
+      }
+      .ff span {
+        font-size: 150%;
+        font-weight: bolder;
+      }
+      .fff span {
+        font-size: 250%;
+        font-weight: bolder;
+      }
+      .button {
+        margin: .2em;
+        padding: .1em .5em;
+        display: inline-block;
+        background: var(--shadow);
+        color: var(--light-color);
+        border-radius: 924em;
+        text-shadow: none;
+      }
+      .hlbutton {
+        background: var(--light-color);
+        color: var(--primary-color);
+        /* border: .2em solid var(--light-color);
+*/ 
+        box-shadow: var(--shadow) .2em .2em .5em;
+      }
+      #bar {
+        margin: 0 !important;
+        position: absolute;
+        background: var(--shadow); 
+        height: 100%; 
+        right: 0;
+        top: 0;
+        /*white-space: nowrap;
+*/
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="banner">
+      <div class="container">
+        <h1>学期计时板</h1>
+        <p>开学快乐 考试快了 QwQ</p>
+      </div>
+    </div>
+
+    <div class="left-bottom">
+      <a href="//ucme.icu/banner.html" class="hlbutton button">⇲ 小窗</a>
+    </div>
+
+    <div class="container">
+      <div class="fr button" id="unfold" onclick="tabswitch()">v</div>
+      <div class="c" id="tab">
+        <a href="//do.ourhome.work" class="button">16官网</a>
+        <a href="//class16.baklib.com" class="button">16博客</a>
+        <a href="//fileport.github.io" class="button">网课&课本</a>
+        <a href="//l33z22l11.gitee.io/app16/wk.jpg" class="button">课程表</a>
+        <a href="//l33z22l11.gitee.io/app16/sl.apk" class="button"
+          ><u>⬇</u> 拾陆APP</a
+        >
+        <a href="//l33z22l11.gitee.io/app16/wk.apk" class="button"
+          ><u>⬇</u> 宝中网课APP</a
+        >
+        <a href="//new.ucme.icu" class="button">测试班级博客(慢)</a>
+        <a
+          href="//wpa.qq.com/msgrd?v=3&amp;uin=2399052066&amp;site=qq&amp;menu=yes"
+          class="hlbutton button"
+          >
+          <img
+            style="height:1em;width:1em;" 
+            src="//thirdqq.qlogo.cn/g?b=qq&amp;nk=2399052066&amp;s=2"
+            />
+        纸鹿QQ +</a
+        >
+        <span id="tabend">到达尽头惹 =w= 为什么你还在滑 〣( ºΔº )〣 真的没了Σ(っ °Д °;)っ</span>
+      </div>
+
+      <div class="c box">
+        <div class="ib">
+          <p class="c">在家学习</p>
+          <p class="c ff"><span id="hd">出</span> 天</p>
+        </div>
+        &nbsp;&nbsp;
+        <div class="ib">
+          <p class="c">正式回归</p>
+          <p class="c ff"><span id="bd">错</span> 天</p>
+        </div>
+        &nbsp;&nbsp;
+        <div class="ib">
+          <p class="c">高三返校</p>
+          <p class="c ff"><span id="thd">了</span> 天</p>
+        </div>
+      </div>
+
+      <div class="box"> 
+        <p>高考倒计时</p>
+        <p class="c fff">
+          <span id="ed">加</span> 天 <span id="eh">载</span> :
+          <span id="em">失</span> :
+          <span id="es">败</span>
+        </p>
+      </div>
+
+      <!-- <div class="box">
+        <div class="fr button" style="position:relative;">
+          Here is a progress bar
+          <div id="bar">
+            <div class="nmg hlbutton button">
+              Here is a progress bar
+            </div>
+          </div>
+        </div> -->
+
+      <div class="box" style="position:relative;">
+        <div id="bar" style="width=14%;"></div>
+        <p>学期进度</p>
+        <p class="c fff">
+          <span id="pi">纸鹿</span> . <span id="pd">不清楚</span> %
+        </p>
+      </div>
+
+      <!-- <div class="box">
+        <div class="flex"> 
+      <div class="c">
+       <img
+          class="profile"
+          style="height:4em;width:4em;" 
+          src="//thirdqq.qlogo.cn/g?b=qq&amp;nk=2399052066&amp;s=3"
+        />
+        <a
+          href="//wpa.qq.com/msgrd?v=3&amp;uin=2399052066&amp;site=qq&amp;menu=yes"
+          class="hlbutton button"
+          >+ QQ</a
+        >
+      </div>
+      &nbsp;&nbsp;
+          <div width="100%">
+            <h3>纸鹿 / Zhilu</h3>
+            <h4>● 摸鱼中</h4>
+            <p>给我时间，我也不知道我会写出什么</p>
+          </div>
+        </div>
+        <a href="//zhilu.fun" class="button">纸鹿小站</a>
+        <a href="//music.163.com/user/444705789" class="button">网易云音乐</a>
+        <a href="//space.bilibili.com/108831145" class="button">Bilibili</a>
+        <a href="//github.com/l33z22l11" class="button">GitHub</a>
+        <a href="//mine.ly/zhilu.2" class="button">Minecraft</a>
+      </div> --> 
+
+    </div>
+
+    <script type="text/javascript">
+      window.onload = main;
+      function main() {
+        var platform = navigator.platform;
+        if (platform.match("Win")) {
+          tabswitch();
+        }
+        home();
+        ststart();
+        rdstart();
+        exam();
+        progress();
+      }
+
+      function home() {
+        var start = new Date("Jan 20 2020");
+        var now = new Date();
+        // var exam = new Date("Jul 1 2020 0:00:00");
+        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
+        document.getElementById("hd").innerHTML = 83; // days;
+        // setTimeout(home, 6000);
+      }
+
+      function ststart() {
+        var start = new Date("Apr 12 2020");
+        var now = new Date();
+        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
+        document.getElementById("bd").innerHTML = days;
+        setTimeout(ststart, 6000);
+      }
+
+      function rdstart() {
+        var start = new Date("Mar 29 2020");
+        var now = new Date();
+        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
+        document.getElementById("thd").innerHTML = days;
+        setTimeout(rdstart, 6000);
+      }
+
+      function exam() {
+        var last = new Date("Jul 7 2020") - new Date();
+        var days = parseInt(last / 1000 / 60 / 60 / 24, 10);
+        var hours = parseInt((last / 1000 / 60 / 60) % 24, 10);
+        var minutes = parseInt((last / 1000 / 60) % 60, 10);
+        var seconds = parseInt((last / 1000) % 60, 10);
+        document.getElementById("ed").innerHTML = days;
+        document.getElementById("eh").innerHTML = preZero(hours, 2);
+        document.getElementById("em").innerHTML = preZero(minutes, 2);
+        document.getElementById("es").innerHTML = preZero(seconds, 2);
+        setTimeout(exam, 500);
+      }
+
+      function progress() {
+        var preStart = new Date("Feb 9 2020 8:00:00");
+        var now = new Date();
+        var preEnd = new Date("Jul 1 2020 8:00:00");
+        var ratio = ((now - preStart) / (preEnd - preStart)) * 100;
+        var pi = parseInt(ratio);
+        var pd = parseInt((ratio * 100000) % 100000);
+        document.getElementById("pi").innerHTML = pi;
+        document.getElementById("pd").innerHTML = preZero(pd,5);
+        var bar = document.getElementById("bar"); 
+        bar.style.width = (100 - ratio) + "%"; 
+        setTimeout(progress, 250);
+      }
+
+      function preZero(num, digit) {
+        return ("000000000000" + num).slice(-digit);
+      }
+    
+      function surZero(num, digit) { // 有bug，别用
+        return (num + "000000000000").slice(digit);
+      }
+
+      function tabswitch() {
+        var tab = document.getElementById("tab");
+        tab.id = "list";
+        var unfold = document.getElementById("unfold");
+        unfold.remove();
+        var unfold = document.getElementById("tabend");
+        tabend.remove();
+      }
+    </script>
+  </body>
+</html>
