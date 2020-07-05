@@ -60,7 +60,7 @@
       .fr {
         float: right;
       }
-      .left-bottom {
+      .right-bottom {
         position: fixed;
         z-index: 924; 
         right: 8%;
@@ -142,8 +142,8 @@
       </div>
     </div>
 
-    <div class="left-bottom">
-      <a href="//ucme.icu/banner.html" class="hlbutton button">⇲ 小窗</a>
+    <div class="right-bottom">
+      <a href="//do.ourhome.work/banner.html" class="hlbutton button">⇲ 小窗</a>
     </div>
 
     <div class="container">
@@ -282,8 +282,8 @@
         var start = new Date("Mar 29 2020");
         var now = new Date();
         var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
-        document.getElementById("thd").innerHTML = days;
-        setTimeout(rdstart, 6000);
+        document.getElementById("thd").innerHTML = 97; // days;
+        //setTimeout(rdstart, 6000);
       }
 
       function exam() {
@@ -302,7 +302,7 @@
       function progress() {
         var preStart = new Date("Feb 9 2020 8:00:00");
         var now = new Date();
-        var preEnd = new Date("Jul 1 2020 8:00:00");
+        var preEnd = new Date("Aug 5 2020 8:00:00");
         var ratio = ((now - preStart) / (preEnd - preStart)) * 100;
         var pi = parseInt(ratio);
         var pd = parseInt((ratio * 100000) % 100000);
@@ -314,11 +314,11 @@
       }
 
       function preZero(num, digit) {
-        return ("000000000000" + num).slice(-digit);
+        return ("0" * digit + num).slice(-digit);
       }
     
       function surZero(num, digit) { // 有bug，别用
-        return (num + "000000000000").slice(digit);
+        return (num + "0" * digit).slice(digit);
       }
 
       function tabswitch() {
