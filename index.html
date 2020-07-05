@@ -314,11 +314,11 @@
       }
 
       function preZero(num, digit) {
-        return ("0" * digit + num).slice(-digit);
+        return ("000000" + num).slice(-digit);
       }
     
       function surZero(num, digit) { // 有bug，别用
-        return (num + "0" * digit).slice(digit);
+        return (num + "000000").slice(digit);
       }
 
       function tabswitch() {
