@@ -20,9 +20,9 @@
       :root {
         --auto-color: #444;
         --light-color: #fff;
-        --primary-color: #8ce;
+        --primary-color: #07f;
         --accent-color: #07f;
-        --dark-color: #9ba;
+        --dark-color: #06c;
         --shadow: rgba(0, 0, 0, 0.3);
       }
       html {
@@ -138,7 +138,7 @@
     <div class="banner">
       <div class="container">
         <h1>学期计时板</h1>
-        <p>开学快乐 考试快了 QwQ</p>
+        <p>太短了 QwQ</p>
       </div>
     </div>
 
@@ -191,7 +191,7 @@
       </div>
 
       <div class="box"> 
-        <p>高考倒计时</p>
+        <p>放假倒计时</p>
         <p class="c fff">
           <span id="ed">加</span> 天 <span id="eh">载</span> :
           <span id="em">失</span> :
@@ -287,7 +287,7 @@
       }
 
       function exam() {
-        var last = new Date("Jul 7 2020") - new Date();
+        var last = new Date("Jul 31 2020 16:05") - new Date();
         var days = parseInt(last / 1000 / 60 / 60 / 24, 10);
         var hours = parseInt((last / 1000 / 60 / 60) % 24, 10);
         var minutes = parseInt((last / 1000 / 60) % 60, 10);
