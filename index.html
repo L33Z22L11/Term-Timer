@@ -20,9 +20,9 @@
       :root {
         --auto-color: #444;
         --light-color: #fff;
-        --primary-color: #07f;
+        --primary-color: #4bf;
         --accent-color: #07f;
-        --dark-color: #06c;
+        --dark-color: #87f;
         --shadow: rgba(0, 0, 0, 0.3);
       }
       html {
@@ -257,7 +257,7 @@
         home();
         ststart();
         rdstart();
-        exam();
+        vacation();
         progress();
       }
 
@@ -274,8 +274,8 @@
         var start = new Date("Apr 12 2020");
         var now = new Date();
         var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
-        document.getElementById("bd").innerHTML = days;
-        setTimeout(ststart, 6000);
+        document.getElementById("bd").innerHTML = 100; //days;
+        // setTimeout(ststart, 6000);
       }
 
       function rdstart() {
@@ -286,8 +286,8 @@
         //setTimeout(rdstart, 6000);
       }
 
-      function exam() {
-        var last = new Date("Jul 31 2020 16:05") - new Date();
+      function vacation() {
+        var last = new Date("Aug 20 2020 18:00") - new Date();
         var days = parseInt(last / 1000 / 60 / 60 / 24, 10);
         var hours = parseInt((last / 1000 / 60 / 60) % 24, 10);
         var minutes = parseInt((last / 1000 / 60) % 60, 10);
@@ -300,9 +300,9 @@
       }
 
       function progress() {
-        var preStart = new Date("Feb 9 2020 8:00:00");
+        var preStart = new Date("Jul 31 2020 16:05:00");
         var now = new Date();
-        var preEnd = new Date("Jul 31 2020 16:05");
+        var preEnd = new Date("Aug 20 2020 18:00");
         var ratio = ((now - preStart) / (preEnd - preStart)) * 100;
         var pi = parseInt(ratio);
         var pd = parseInt((ratio * 100000) % 100000);
