@@ -274,7 +274,7 @@
         var start = new Date("Apr 12 2020");
         var now = new Date();
         var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
-        document.getElementById("bd").innerHTML = 100; //days;
+        document.getElementById("bd").innerHTML = 110; //days;
         // setTimeout(ststart, 6000);
       }
 
@@ -296,11 +296,11 @@
         document.getElementById("eh").innerHTML = preZero(hours, 2);
         document.getElementById("em").innerHTML = preZero(minutes, 2);
         document.getElementById("es").innerHTML = preZero(seconds, 2);
-        setTimeout(exam, 500);
+        setTimeout(vacation, 500);
       }
 
       function progress() {
-        var preStart = new Date("Jul 31 2020 16:05:00");
+        var preStart = new Date("Jul 31 2020 16:05");
         var now = new Date();
         var preEnd = new Date("Aug 20 2020 18:00");
         var ratio = ((now - preStart) / (preEnd - preStart)) * 100;
