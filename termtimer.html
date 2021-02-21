@@ -117,7 +117,7 @@
 */ 
         box-shadow: var(--shadow) .2em .2em .5em;
       }
-      .button img {
+      .button > img {
         height: 1em;
         width: 1em;
         border-radius: 0.5;
@@ -150,8 +150,9 @@
     <div class="container">
       <div class="fr button" id="unfold" onclick="tabswitch()">v</div>
       <div class="c" id="tab">
-        <a href="//h16.zhilu.cyou" class="button">16官网</a>
-        <a href="//bjzx.zhilu.cyou" class="button">网课&课本</a>
+        <a href="//bjzx.com.cn" class="button">宝中官网</a>
+        <a href="//h16.zhilu.cyou" class="button">22届16班官网</a>
+        <a href="//bjzx.zhilu.cyou" class="button">线上教学资源站</a>
         <!--<a href="//class16.baklib-free.com" class="button">16博客</a>
         <a href="//l33z22l11.gitee.io/app16/wk.jpg" class="button">课程表</a>
         <a href="//h5.zhilu.cyou/app/16.apk" class="button"
@@ -199,7 +200,7 @@
       </div>
 
       <div class="box"> 
-        <a class="fr hlbutton button href="//www.sneea.cn/info/1024/7506.htm">官方公告</a>
+        <a class="fr hlbutton button" href="//www.sneea.cn/info/1024/7506.htm">官方公告</a>
         <p>2021年陕西省普通高中学业水平考试倒计时</p>
         <p class="c fff">
           <span id="ed">加</span> 天 <span id="eh">载</span> :
@@ -288,7 +289,7 @@
       }
 
       function rdstart() {
-        var start = new Date("Feb 15 2020");
+        var start = new Date("Feb 15 2021");
         var now = new Date();
         var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10) + 1;
         document.getElementById("thd").innerHTML = days;
