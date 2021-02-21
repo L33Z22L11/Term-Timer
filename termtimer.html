@@ -11,11 +11,7 @@
         margin: 0 auto;
         padding: 0;
         text-align: left;
-        text-shadow: 2px 2px 2px var(--shadow)/*, 
-        1px 0 var(--auto-color), -1px 0 var(--auto-color), 
-        0 1px var(--auto-color), 0 -1px var(--auto-color), 
-        1px -1px var(--auto-color), -1px 1px var(--auto-color), 
-        1px 1px var(--auto-color), -1px -1px var(--auto-color)*/;
+        text-shadow: 2px 2px 2px var(--shadow)
       }
       :root {
         --auto-color: #444;
@@ -121,6 +117,11 @@
 */ 
         box-shadow: var(--shadow) .2em .2em .5em;
       }
+      .button img {
+        height: 1em;
+        width: 1em;
+        border-radius: 0.5;
+      }
       #bar {
         margin: 0 !important;
         position: absolute;
@@ -138,37 +139,44 @@
     <div class="banner">
       <div class="container">
         <h1>学期计时板</h1>
-        <p>太短了 QwQ</p>
+        <p>一个不知道什么时候写的网站</p>
       </div>
     </div>
 
     <div class="right-bottom">
-      <a href="//do.ourhome.work/banner.html" class="hlbutton button">⇲ 小窗</a>
+      <a href="/termtimer.html" class="hlbutton button">⇲ 小窗</a>
     </div>
 
     <div class="container">
       <div class="fr button" id="unfold" onclick="tabswitch()">v</div>
       <div class="c" id="tab">
-        <a href="//do.ourhome.work" class="button">16官网</a>
-        <a href="//class16.baklib.com" class="button">16博客</a>
-        <a href="//fileport.github.io" class="button">网课&课本</a>
+        <a href="//h16.zhilu.cyou" class="button">16官网</a>
+        <a href="//bjzx.zhilu.cyou" class="button">网课&课本</a>
+        <!--<a href="//class16.baklib-free.com" class="button">16博客</a>
         <a href="//l33z22l11.gitee.io/app16/wk.jpg" class="button">课程表</a>
-        <a href="//l33z22l11.gitee.io/app16/sl.apk" class="button"
+        <a href="//h5.zhilu.cyou/app/16.apk" class="button"
           ><u>⬇</u> 拾陆APP</a
         >
-        <a href="//l33z22l11.gitee.io/app16/wk.apk" class="button"
+        <a href="//h5.zhilu.cyou/app/wk.apk" class="button"
           ><u>⬇</u> 宝中网课APP</a
-        >
-        <a href="//new.ucme.icu" class="button">测试班级博客(慢)</a>
+        >-->
         <a
           href="//wpa.qq.com/msgrd?v=3&amp;uin=2399052066&amp;site=qq&amp;menu=yes"
           class="hlbutton button"
           >
           <img
-            style="height:1em;width:1em;" 
             src="//thirdqq.qlogo.cn/g?b=qq&amp;nk=2399052066&amp;s=2"
             />
         纸鹿QQ +</a
+        >
+        <a
+          href="//jq.qq.com/?_wv=1027&k=DVqpNNji"
+          class="hlbutton button"
+          >
+          <img
+            src="//p.qlogo.cn/gh/894656456/894656456/100"
+            />
+        宝中摸鱼技术群 +</a
         >
         <span id="tabend">到达尽头惹 =w= 为什么你还在滑 〣( ºΔº )〣 真的没了Σ(っ °Д °;)っ</span>
       </div>
@@ -191,7 +199,8 @@
       </div>
 
       <div class="box"> 
-        <p>第三轮素质拓展倒计时</p>
+        <a class="fr hlbutton button href="//www.sneea.cn/info/1024/7506.htm">官方公告</a>
+        <p>2021年陕西省普通高中学业水平考试倒计时</p>
         <p class="c fff">
           <span id="ed">加</span> 天 <span id="eh">载</span> :
           <span id="em">失</span> :
@@ -211,7 +220,7 @@
 
       <div class="box" style="position:relative;">
         <div id="bar" style="width=14%;"></div>
-        <p>宝中高一平行班假期进度</p>
+        <p>2020-2021学年度第二学习预计进度</p>
         <p class="c fff">
           <span id="pi">纸鹿</span> . <span id="pd">不清楚</span> %
         </p>
@@ -257,7 +266,7 @@
         home();
         ststart();
         rdstart();
-        vacation();
+        cd();
         progress();
       }
 
@@ -266,28 +275,28 @@
         var now = new Date();
         // var exam = new Date("Jul 1 2020 0:00:00");
         var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
-        document.getElementById("hd").innerHTML = 83; // days;
+        document.getElementById("hd").innerHTML = 16; // days;
         // setTimeout(home, 6000);
       }
 
       function ststart() {
-        var start = new Date("Apr 12 2020");
+        var start = new Date("Feb 17 2021");
         var now = new Date();
-        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
-        document.getElementById("bd").innerHTML = 110; //days;
-        // setTimeout(ststart, 6000);
+        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10) + 1;
+        document.getElementById("bd").innerHTML = days;
+        setTimeout(ststart, 6000);
       }
 
       function rdstart() {
-        var start = new Date("Mar 29 2020");
+        var start = new Date("Feb 15 2020");
         var now = new Date();
-        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
-        document.getElementById("thd").innerHTML = 97; // days;
-        //setTimeout(rdstart, 6000);
+        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10) + 1;
+        document.getElementById("thd").innerHTML = days;
+        setTimeout(rdstart, 6000);
       }
 
-      function vacation() {
-        var last = new Date("Aug 20 2020 18:00") - new Date();
+      function cd() {
+        var last = new Date("Mar 27 2021 8:30") - new Date();
         var days = parseInt(last / 1000 / 60 / 60 / 24, 10);
         var hours = parseInt((last / 1000 / 60 / 60) % 24, 10);
         var minutes = parseInt((last / 1000 / 60) % 60, 10);
@@ -296,13 +305,13 @@
         document.getElementById("eh").innerHTML = preZero(hours, 2);
         document.getElementById("em").innerHTML = preZero(minutes, 2);
         document.getElementById("es").innerHTML = preZero(seconds, 2);
-        setTimeout(vacation, 500);
+        setTimeout(cd, 500);
       }
 
       function progress() {
-        var preStart = new Date("Jul 31 2020 16:05");
+        var preStart = new Date("Feb 27 2021 10:00");
         var now = new Date();
-        var preEnd = new Date("Aug 20 2020 18:00");
+        var preEnd = new Date("Jun 30 2021 17:30");
         var ratio = ((now - preStart) / (preEnd - preStart)) * 100;
         var pi = parseInt(ratio);
         var pd = parseInt((ratio * 100000) % 100000);
