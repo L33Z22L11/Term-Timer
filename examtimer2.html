@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            /* border: red solid 1px; */
+            margin: 0px;
+            padding: 0px;
+            color: white;
+            text-decoration: none;
+        }
+
+        html,
+        body {
+            background: black;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 48px "微软雅黑";
+        }
+
+        .bar {
+            display: inline-block;
+            position: relative;
+            width: 80%;
+            height: 0.65em;
+            border: 0.05em solid white;
+            overflow: hidden;
+            border-radius: 1em;
+        }
+
+        #bar {
+            position: absolute;
+            height: 100%;
+            background: white;
+        }
+
+        .half * {
+            opacity: 0.5;
+            font-size: 0.5em;
+        }
+    </style>
+    <title>考试时钟</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>沉着冷静&emsp;诚信考试</h1>
+        <br>
+        <h2 id="timer">计时器文字</h2>
+        <div>
+            <span id="detail">详细信息</span>
+            <span class="half"><a href="/examtimer.html">切换到理科 ></a></span>
+        </div>
+        <br>
+        <div>
+            <div class="bar">
+                <div id="bar"></div>
+            </div>
+            <span id="progress">进度</span>
+        </div>
+        <br>
+        <h6>根据此班电脑时间生成，仅供参考，请以实际铃声为准。</h6>
+        <div class="half">
+            <p>宝中野生技术协会 SINCE 2020</p>
+            <p>© 2019-2021 Zhilu</p>
+        </div>
+    </div>
+</body>
+
+<script>
+    window.onload = examTimer();
+    function examTimer() {
+        time = new Date();
+        end = 0;
+        function update(nextSubject, nextStart, nextEnd) {
+            if (time > end) {
+                subject = nextSubject;
+                start = new Date(nextStart);
+                end = new Date(nextEnd);
+            }
+        }
+        update("英语", "2021-04-02T14:00", "2021-04-02T16:00");
+        update("政治", "2021-04-02T16:30", "2021-04-02T18:10");
+        update("语文", "2021-04-03T07:40", "2021-04-03T10:10");
+        update("历史", "2021-04-03T10:40", "2021-04-03T12:20");
+        update("数学", "2021-04-03T14:00", "2021-04-03T16:00");
+        update("地理", "2021-04-03T16:30", "2021-04-03T18:10");
+        if (time < start) {
+            timer = subject + "还有" + parseInt((start - time) / 60000) + "分钟开始";
+            progress = 0;
+        }
+        else if (time > end) {
+            timer = "请携带随身物品离开离场";
+            progress = 100;
+        }
+        else {
+            timer = subject + "还有" + parseInt((end - time) / 60000) + "分钟结束";
+            progress = parseInt((time - start) / (end - start) * 100);
+        }
+        function getMM(i) {
+            i = i.getMinutes();
+            if (i < 10) { i = "0" + i; }
+            return i;
+        }
+        detail = subject + "&emsp;"
+            + start.getHours() + ":" + getMM(start)
+            + "~"
+            + end.getHours() + ":" + getMM(end);
+        document.getElementById("timer").innerHTML = timer;
+        document.getElementById("detail").innerHTML = detail;
+        document.getElementById("bar").style.width = progress + "%";
+        document.getElementById("progress").innerHTML = progress + "%";
+        setTimeout(examTimer, 1000);
+    }
+</script>
+
+</html>
