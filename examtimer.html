@@ -14,20 +14,19 @@
         }
 
         html {
-            background: url(//cdn-portal-img.30edu.com.cn/5a8e8097-182d-44d1-bac6-6e01dd84b6fe/20161114/FhjNEW88YKIczCP1hkoJXkwdERGV/%E5%90%AC%EF%BC%8C%E4%BD%A0%E7%9A%84%E8%AF%BB%E4%B9%A6%E5%A3%B0.jpg);
+            background: url(//i.loli.net/2021/04/01/c2Z6vLqsBj1wGXd.jpg);
             background-repeat: no-repeat;
             background-size: cover;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font: 48px "微软雅黑";
+            font: 4.5vw "微软雅黑";
         }
 
-        .container {
-            padding: 1em;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 1em;
+        hr {
+            height: 0.5em;
+            border: none;
         }
 
         .bar {
@@ -46,7 +45,7 @@
             background: white;
         }
 
-        .half * {
+        .half {
             opacity: 0.5;
             font-size: 0.5em;
         }
@@ -56,21 +55,21 @@
 
 <body>
     <div class="container">
-        <h1>沉着冷静&emsp;诚信考试</h1>
-        <br>
+        <p>沉着冷静&emsp;诚信考试</p>
+        <hr>
         <h2 id="timer">计时器文字</h2>
         <div>
             <span id="detail">详细信息</span>
-            <span class="half"><a href="/examtimer2.html">切换到文科 ></a></span>
+            <a class="half" href="/examtimer2.html">切换到文科 ></a>
         </div>
-        <br>
+        <hr>
         <div>
             <div class="bar">
                 <div id="bar"></div>
             </div>
             <span id="progress">进度</span>
         </div>
-        <br>
+        <hr>
         <h6>根据此班电脑时间生成，仅供参考，请以实际铃声为准。</h6>
         <div class="half">
             <p>宝中野生技术协会 SINCE 2020</p>
@@ -98,15 +97,15 @@
         update("数学", "2021-04-03T14:00", "2021-04-03T16:00");
         update("物理", "2021-04-03T16:30", "2021-04-03T18:10");
         if (time < start) {
-            timer = subject + "还有" + parseInt((start - time) / 60000) + "分钟开始";
+            timer = parseInt((start - time) / 60000) + "min 后开始";
             progress = 0;
         }
         else if (time > end) {
-            timer = "请携带随身物品离开离场";
+            timer = "请携带随身物品离场";
             progress = 100;
         }
         else {
-            timer = subject + "还有" + parseInt((end - time) / 60000) + "分钟结束";
+            timer = parseInt((end - time) / 60000) + "min 后结束";
             progress = parseInt((time - start) / (end - start) * 100);
         }
         function getMM(i) {
