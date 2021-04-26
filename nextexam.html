@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/nextexam.css" rel="stylesheet">
+    <link href="//fonts.font.im/css?family=Montserrat:500i" rel="stylesheet">
+    <title>考试时钟</title>
+</head>
+
+<body>
+    <div class="container">
+        <h6>
+            <span>沉着冷静&emsp;诚信考试 ·</span>
+            <span id="progress">进度</span>
+            <span class="menu">
+                <select>
+                    <!-- <option onclick="type=20;">高二理科</option> -->
+                    <option onclick="type=21;">高二文科</option>
+                </select>
+                <span onclick="fullscreen()">全屏/退出</span>
+            </span>
+        </h6>
+        <h6 class="half">
+            <a href="/examtimer.html">
+                此页面暂未完成，请点击此处返回原版。
+            </a>
+        </h6>
+        <div style="line-height: 0;">
+            <div class="bar">
+                <div id="bar"></div>
+            </div>
+        </div>
+        <div class="card">
+            <div>
+                <h2 id="subject">科目</h3>
+                    <h6 id="duration">详细信息</h6>
+            </div>
+            <div>
+                <h1 id="time">时间</h1>
+            </div>
+            <div>
+                <h2 id="timer">计时</h2>
+                <h6 id="notes">提示文字</h6>
+            </div>
+        </div>
+        <div class="half">
+            <p class="half">&nbsp;</p>
+            <p id="tell">电脑时间存在误差，仅供参考，请以实际铃声为准。</p>
+            <p>纸鹿 × 宝中野生技术协会</p>
+        </div>
+    </div>
+</body>
+
+<script src="/nextexam.js"></script>
+
+</html>

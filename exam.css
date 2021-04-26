@@ -1,0 +1,58 @@
+* {
+    /* border: red solid 1px; */
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    text-decoration: none;
+}
+
+html {
+    background: #098 url(//i.loli.net/2021/04/01/c2Z6vLqsBj1wGXd.jpg) center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font: 5.5vw 'Montserrat', "微软雅黑", sans-serif;
+    font: min(6vw, 10vh) 'Montserrat', "微软雅黑", sans-serif;
+}
+
+.container {
+    opacity: 0.8;
+    min-width: 14em;
+}
+
+.menu {
+    float: right;
+    line-height: 1rem;
+    font-size: 0.5em;
+    opacity: 0.5;
+}
+
+hr {
+    height: 0.5em;
+    border: none;
+}
+
+.bar {
+    display: inline-block;
+    position: relative;
+    width: 75%;
+    height: 0.6em;
+    /* background: rgba(255, 255, 255, 0.2); */
+    border: 0.05em solid white;
+    overflow: hidden;
+    border-radius: 1em;
+}
+
+#bar {
+    position: absolute;
+    height: 100%;
+    background: white;
+}
+
+.half {
+    opacity: 0.5;
+    font-size: 0.5em;
+}

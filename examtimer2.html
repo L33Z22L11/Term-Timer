@@ -4,58 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        * {
-            /* border: red solid 1px; */
-            margin: 0px;
-            padding: 0px;
-            color: white;
-            text-decoration: none;
-        }
-
-        html {
-            background: #098 url(//i.loli.net/2021/04/01/c2Z6vLqsBj1wGXd.jpg) center;
-            background-size: cover;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font: 5.5vw sans-serif;
-            font: min(6vw, 10vh) sans-serif;
-        }
-
-        .container {
-            opacity: 0.8;
-            width: 14em;
-        }
-
-        hr {
-            height: 0.5em;
-            border: none;
-        }
-
-        .bar {
-            display: inline-block;
-            position: relative;
-            width: 75%;
-            height: 0.6em;
-            /* background: rgba(255, 255, 255, 0.2); */
-            border: 0.05em solid white;
-            overflow: hidden;
-            border-radius: 1em;
-        }
-
-        #bar {
-            position: absolute;
-            height: 100%;
-            background: white;
-        }
-
-        .half {
-            opacity: 0.5;
-            font-size: 0.5em;
-        }
-    </style>
+    <link href="/exam.css" rel="stylesheet">
+    <link href="//fonts.font.im/css?family=Montserrat:500i" rel="stylesheet">
     <title>文科考试时钟</title>
 </head>
 
@@ -63,7 +13,8 @@
     <div class="container">
         <h6>
             <span>沉着冷静&emsp;诚信考试</span>&emsp;
-            <span class="half">
+            <span class="menu">
+                <a href="/nextexam.html">测试</a>&emsp;
                 <a href="/examtimer.html">切换理科</a>&emsp;
                 <span onclick="fullscreen()">全屏/退出</span>
             </span>
@@ -93,6 +44,7 @@
     window.onload = function () {
         // alert("");
         end = 0;
+        sMin = '<span class="half">min</span>';
         examTimer();
     }
 
@@ -107,10 +59,10 @@
             document.documentElement.requestFullscreen();
         }
         else { document.exitFullscreen(); }
-
     }
+
     function update(nextSubject, nextStart, nextEnd) {
-        if (time > end) {
+        if (now > end) {
             subject = nextSubject;
             start = new Date(nextStart);
             end = new Date(nextEnd);
@@ -124,8 +76,8 @@
     }
 
     function examTimer() {
-        time = new Date();
-        update("文科数学", "2021-04-29T14:00", "2021-04-29T16:00");
+        now = new Date();
+        update("数学", "2021-04-29T14:00", "2021-04-29T16:00");
         update("历史", "2021-04-29T16:30", "2021-04-29T18:10");
         update("语文", "2021-04-30T07:40", "2021-04-30T10:10");
         update("地理", "2021-04-30T10:40", "2021-04-30T12:20");
@@ -133,21 +85,30 @@
         update("政治", "2021-04-30T16:30", "2021-04-30T18:10");
         detail = start.getHours() + ":" + getMM(start) +
             "~" + end.getHours() + ":" + getMM(end);
-        if (time > end) {
+        if (now < (start - 12E5)) {
+            timer = Math.round((start - 12E5 - now) / 60000) + "min 后入场";
+            progress = 0;
+        } else if (now < (start - 6E5)) {
+            timer = Math.round((start - 6E5 - now) / 60000) + "min 后发答题卡";
+            progress = 0;
+        } else if (now < (start - 3E5)) {
+            timer = Math.round((start - 3E5 - now) / 60000) + "min 后发卷";
+            progress = 0;
+        } else if (now < start) {
+            timer = Math.round((start - now) / 60000) + "min 后开考";
+            progress = 0;
+        } else if (now > end) {
             subject = "假期愉快";
             detail = "我们都是上学人";
             timer = "请携带随身物品离场";
             progress = 100;
-        } else if (time < start) {
-            timer = Math.round((start - time) / 60000) + "min 后开始";
-            progress = 0;
         } else {
-            timer = Math.round((end - time) / 60000) + "min 后结束";
-            progress = Math.round((time - start) / (end - start) * 100);
+            timer = Math.round((end - now) / 60000) + "min 后结束";
+            progress = Math.round((now - start) / (end - start) * 100);
         }
         document.getElementById("subject").innerHTML = subject;
-        document.getElementById("timer").innerHTML = timer;
         document.getElementById("detail").innerHTML = detail;
+        document.getElementById("timer").innerHTML = timer;
         document.getElementById("bar").style.width = progress + "%";
         document.getElementById("progress").innerHTML = progress + "%";
         setTimeout(examTimer, 3000);
