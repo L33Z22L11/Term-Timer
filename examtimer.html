@@ -47,11 +47,9 @@
         examTimer();
     }
 
-    document.oncontextmenu = window.onkeydown = window.onkeyup
-        = window.onkeypress = function () {
-            event.returnValue = false;
-            // return false;
-        }
+    document.oncontextmenu = window.onkeydown
+        = window.onkeyup = window.onkeypress
+        = function () { event.returnValue = false; }
 
     function fullscreen() {
         if (!document.fullscreenElement) {
