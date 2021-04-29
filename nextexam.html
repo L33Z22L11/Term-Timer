@@ -13,10 +13,12 @@
     <div class="container">
         <div class="menu">
             <span class="dropdown">
-                <a id="typename">类型</a>
-                <span onclick="change(20)">高二理科</span>
-                <span onclick="change(21)">高二文科</span>
-                <span onclick="change(10)">高一</span>
+                <span id="type">类型</span>▾
+                <p>
+                    <a onclick="change(this.innerHTML)">高二理科</a>
+                    <a onclick="change(this.innerHTML)">高二文科</a>
+                    <a onclick="change(this.innerHTML)">高一</a>
+                </p>
             </span>&emsp;
             <span onclick="fullscreen()">全屏/退出</span>
         </div>
@@ -26,7 +28,7 @@
         </h6>
         <h6 class="half">
             <a href="/examtimer.html">
-                此页面未启用，仅供测试，点此返回高二考试计时。
+                此页面公测中，点此返回高二考试计时。
             </a>
         </h6>
         <nav class="bar">

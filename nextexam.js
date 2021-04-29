@@ -1,6 +1,6 @@
 window.onload = function () {
     // alert("");
-    change(20);
+    change("高二理科");
     examTimer();
 }
 
@@ -8,15 +8,10 @@ window.onload = function () {
 //     = window.onkeyup = window.onkeypress
 //     = function () { event.returnValue = false; }
 
-function change(totype) {
+function change(i) {
     end = 0;
-    type = totype;
-    switch (type) {
-        case 20: typename = "高二理科"; break;
-        case 21: typename = "高二文科"; break;
-        case 10: typename = "高一"; break;
-        default: typename = "未选择";
-    }
+    type = i;
+    console.log(type);
 }
 
 function fullscreen() {
@@ -44,11 +39,15 @@ function minTimer(i) {
     return Math.round(i / 60000) + '<span class="half">min</span>';
 }
 
+function output(id, value) {
+    document.getElementById(id).innerHTML = value;
+}
+
 function examTimer() {
     now = new Date();
     // console.log(typename);
     switch (type) {
-        case 20:
+        case "高二理科":
             update("理科数学", "2021-04-29T14:00", "2021-04-29T16:00");
             update("物理", "2021-04-29T16:30", "2021-04-29T18:10");
             update("语文", "2021-04-30T07:40", "2021-04-30T10:10");
@@ -56,7 +55,7 @@ function examTimer() {
             update("英语", "2021-04-30T14:00", "2021-04-30T16:00");
             update("化学", "2021-04-30T16:30", "2021-04-30T18:10");
             break;
-        case 21:
+        case "高二文科":
             update("文科数学", "2021-04-29T14:00", "2021-04-29T16:00");
             update("历史", "2021-04-29T16:30", "2021-04-29T18:10");
             update("语文", "2021-04-30T07:40", "2021-04-30T10:10");
@@ -64,14 +63,14 @@ function examTimer() {
             update("英语", "2021-04-30T14:00", "2021-04-30T16:00");
             update("政治", "2021-04-30T16:30", "2021-04-30T18:10");
             break;
-        case 10:
+        case "高一":
             update("语文", "2021-04-29T07:50", "2021-04-29T09:50");
             update("英语", "2021-04-29T10:20", "2021-04-29T12:00");
             update("数学", "2021-04-29T14:00", "2021-04-29T15:40");
-            update("生物", "2021-04-29T14:00", "2021-04-29T16:00");
+            update("生物", "2021-04-29T16:10", "2021-04-29T17:40");
             update("史地", "2021-04-30T07:50", "2021-04-30T09:50");
             update("化学", "2021-04-30T10:20", "2021-04-30T12:00");
-            update("物理", "2021-04-30T14:00", "2021-04-30T16:00");
+            update("物理", "2021-04-30T14:00", "2021-04-30T15:40");
             update("政治", "2021-04-30T16:10", "2021-04-30T17:10");
             break;
         default:
@@ -96,25 +95,25 @@ function examTimer() {
         next = "距离开考";
         progress = 0;
     } else if (now > end) {
-        tell = "假期愉快。我们都是上学人。<br>"
-        // + "建议可向 QQ 2399052066 反馈<br>"
-        // + "意见可向高二年级张主任反馈"
+        tell = "假期愉快。我们都是上学人。<br>\
+        建议可向 QQ 2399052066 反馈<br>\
+        意见可向高二年级张主任反馈"
         timer = "Nice";
         next = "已结束"
         progress = 100;
     } else {
         timer = minTimer(end - now);
         next = "距离结束";
-        progress = Math.round((now - start) / (end - now) * 100);
+        progress = (now - start) / (end - start) * 100;
     }
+    output("type", type);
     document.getElementById("bar").style.width = progress + "%";
-    document.getElementById("typename").innerHTML = typename;
-    // document.getElementById("progress").innerHTML = progress + "%";
-    document.getElementById("subject").innerHTML = subject;
-    document.getElementById("duration").innerHTML = duration;
-    document.getElementById("time").innerHTML = time;
-    document.getElementById("timer").innerHTML = timer;
-    document.getElementById("next").innerHTML = next;
-    document.getElementById("tell").innerHTML = tell;
+    // output("progress", Math.round(progress)+"%");
+    output("subject", subject);
+    output("duration", duration);
+    output("time", time);
+    output("timer", timer);
+    output("next", next);
+    output("tell", tell);
     setTimeout(examTimer, 1000);
 }

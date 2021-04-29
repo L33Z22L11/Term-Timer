@@ -15,34 +15,42 @@ html {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    font: 5.5vw 'Montserrat', "微软雅黑", sans-serif;
-    font: min(5.5vw, 12vh) 'Montserrat', "微软雅黑", sans-serif;
+    font: 6vw 'Montserrat', "微软雅黑", sans-serif;
+    font: min(6vw, 12vh) 'Montserrat', "微软雅黑", sans-serif;
 }
 
 .container {
-    opacity: 0.6;
+    opacity: 0.75;
 }
 
 .menu {
+    position: relative;
+    top: 1em;
     float: right;
-    line-height: 0.8rem;
+    z-index: 1;
     font-size: 0.3em;
     opacity: 0.5;
 }
 
-#typename {
-    padding: .3em;
+.dropdown,
+.dropdown * {
+    padding: 0.2em;
     background: white;
     color: gray;
     border-radius: 0.5em;
 }
 
-.dropdown>span {
+.dropdown>p {
     display: none;
 }
 
-.dropdown:hover>* {
-    display: inline;
+.dropdown:hover>p {
+    display: block;
+    position: absolute;
+}
+
+.dropdown>p>a {
+    display: block;
 }
 
 .bar {
@@ -65,25 +73,25 @@ html {
 
 .card>div {
     margin: 0.1em;
-    padding: 0.2em 0.5em;
+    padding: 0.2em 0.4em;
     background: rgba(255, 255, 255, 0.2);
     display: inline-block;
     border-radius: 0.5em;
 }
 
 .card>div>h6 {
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 .half {
     font-size: 0.4em;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 @media (max-aspect-ratio: 1/1) {
     html {
         font: 10vw 'Montserrat', "微软雅黑", sans-serif;
-        font: min(10vw,12vh) 'Montserrat', "微软雅黑", sans-serif;
+        font: min(10vw, 12vh) 'Montserrat', "微软雅黑", sans-serif;
     }
 
     .menu {
