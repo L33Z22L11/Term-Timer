@@ -10,6 +10,8 @@ window.onload = function () {
 
 function change(i) {
     end = 0;
+    progress = 0;
+    tell = "电脑时间存在误差，仅供参考，请以实际铃声为准。";
     type = i;
     console.log(type);
 }
@@ -79,14 +81,13 @@ function examTimer() {
     duration = start.getHours() + ":" + getMM(start) +
         "~" + end.getHours() + ":" + getMM(end);
     time = now.getHours() + ":" + getMM(now);
-    tell = "电脑时间存在误差，仅供参考，请以实际铃声为准。";
     if (now < (start - 12E5)) {
         timer = minTimer(start - 12E5 - now);
         next = "距离入场";
         progress = 0;
     } else if (now < (start - 6E5)) {
         timer = minTimer(start - 6E5 - now);
-        next = "距离发答题卡";
+        next = "距离发卡";
     } else if (now < (start - 3E5)) {
         timer = minTimer(start - 3E5 - now);
         next = "距离发卷";
@@ -95,9 +96,9 @@ function examTimer() {
         next = "距离开考";
         progress = 0;
     } else if (now > end) {
-        tell = "假期愉快。我们都是上学人。<br>\
-        建议可向 QQ 2399052066 反馈<br>\
-        意见可向高二年级张主任反馈"
+        tell = "假期愉快。我们都是上学人。"
+        // + "<br>建议可向 QQ 2399052066 反馈"
+        // + "<br>意见可向高二年级张主任反馈"
         timer = "Nice";
         next = "已结束"
         progress = 100;
