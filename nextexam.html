@@ -1,56 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh-cmn">
+<!-- 代码全部由纸鹿编写 -->
+<!-- 已经开源发布至GitHub L33Z22L11/H5-Works -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/nextexam.css" rel="stylesheet">
-    <link href="//fonts.font.im/css?family=Montserrat:500i" rel="stylesheet">
+    <link href="https://fonts.font.im/css?family=Montserrat:500i" rel="stylesheet">
     <title>考试时钟</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="menu">
-            <span class="dropdown">
+    <div class="container" style="opacity: 0.75;">
+
+        <div class="menu dim">
+            <span class="hilit dropdown">
                 <span id="type">类型</span>▾
-                <p>
-                    <a onclick="change(this.innerHTML)">高二理科</a>
-                    <a onclick="change(this.innerHTML)">高二文科</a>
-                    <a onclick="change(this.innerHTML)">高一</a>
-                </p>
-            </span>&emsp;
-            <span onclick="fullscreen()">全屏/退出</span>
+                <ul>
+                    <li onclick="change(this.innerHTML)">高二理科</li>
+                    <li onclick="change(this.innerHTML)">高二文科</li>
+                    <li onclick="change(this.innerHTML)">高一</li>
+                </ul>
+            </span>
+            &emsp;
+            <span class="dropdown">设置▾
+                <ul style="left: -5em; min-width: 9.5em; ">
+                    <li>字号
+                        <mark>
+                            <span onclick="setFontSize('48px')">小</span>
+                            <span onclick="setFontSize('53px')">中</span>
+                            <span onclick="setFontSize('54px')">大</span>
+                            <span onclick="setFontSize('inherit')">自动</span>
+                        </mark>
+                        <p class="dim">非必要情况请勿修改字号</p>
+                    </li>
+                    <li>对比度
+                        <mark>
+                            <a onclick="adjustContrast(-0.05)">一</a>
+                            <span id="contrast">默认</span>
+                            <a onclick="adjustContrast(+0.05)">十</a>
+                        </mark>
+                    </li>
+                    <p class="small">
+                        <!-- 当前版本：5.2.0<br> -->
+                        GitHub L33Z22L11
+                        <a href="https://github.com/L33Z22L11">Follow</a>
+                        <a href="https://github.com/L33Z22L11/H5-Works">★Star</a>
+                    </p>
+                </ul>
+            </span>
+            &emsp;
+            <span id="fullscreen" onclick="fullscreen()">全屏</span>
         </div>
-        <h6>
-            <span>沉着冷静&emsp;诚信考试</span>
+
+        <h2>
+            沉着冷静&emsp;诚信考试
             <!-- <span id="progress">进度</span> -->
-        </h6>
-        <h6 class="half">
-            <a href="/examtimer.html">
-                此页面公测中，点此返回高二考试计时。
-            </a>
-        </h6>
-        <nav class="bar">
-            <nav id="bar"></nav>
-        </nav>
+        </h2>
+        <p class="dim" id="tell"></p>
+
+        <p class="dim">
+            <!-- 新版页面正式发布，并且更换了服务器。 -->
+            <!-- <a href="/examtimer.html">此页面公测中，点此返回高二考试计时。</a> -->
+        </p>
+
+        <div class="bar">
+            <div id="bar"></div>
+        </div>
+
         <div class="card">
             <div>
-                <h3 id="subject">科目</h3>
-                <h6 id="duration">详细信息</h6>
+                <h3 class="dp2" id="subject">科目</h3>
+                <h4 class="dp3" id="duration">16:66~17:77</h4>
             </div>
             <div>
-                <h1 id="time">时间</h1>
+                <h3 class="dp1" id="clock">18:88</h3>
             </div>
             <div>
-                <h3 id="timer">计时</h3>
-                <h6 id="next">提示文字</h6>
+                <h3 class="dp2" id="timer">199<span class="small">min</span></h3>
+                <h4 class="dp3" id="next">提示文字</h4>
             </div>
         </div>
-        <div class="half">
-            <p id="tell"></p>
-            <p>纸鹿 × 宝中野生技术协会</p>
+
+        <div class="dim">
+            <!-- <p>纸鹿 × 宝中野生技术协会</p> -->
+            <p class="credits">
+                主创
+                <!-- "纸鹿 野生技协 拾汘 LittleStar" -->
+                <img src="https://7.dusays.com/2021/05/20/516f2440c1d53.png">
+                合作伙伴
+                <!-- "划水方块 音幻宝中 朗诵社 排球社 宝中合唱团 街舞社 汉服社" -->
+                <img src="https://7.dusays.com/2021/05/20/2e7431412dc87.png">
+            </p>
         </div>
+
     </div>
 </body>
 

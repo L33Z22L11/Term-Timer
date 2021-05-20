@@ -1,29 +1,47 @@
-window.onload = function () {
-    // alert("");
-    change("高二理科");
-    examTimer();
-}
+onload = change("高二理科");
 
-// document.oncontextmenu = window.onkeydown
-//     = window.onkeyup = window.onkeypress
-//     = function () { event.returnValue = false; }
+oncontextmenu = onkeydown = onselectstart
+// = function () { return false; }
 
 function change(i) {
     end = 0;
     progress = 0;
     tell = "电脑时间存在误差，仅供参考，请以实际铃声为准。";
+    output("tell", tell)
     type = i;
     console.log(type);
+    output("type", type);
+    setTimeout(examTimer, 100);
+}
+
+function setFontSize(size) {
+    document.getElementsByClassName("container")[0].style.fontSize = size;
+}
+
+function adjustContrast(delta) {
+    eleContainer = document.getElementsByClassName("container")[0];
+    contrast = Number(eleContainer.style.opacity) + delta;
+    if (contrast < 0.5) { contrast = 0.5; }
+    if (contrast > 1) { contrast = 1; }
+    eleContainer.style.opacity = String(contrast);
+    console.log(contrast);
+    if (contrast == 0.75) { contrast = "默认"; }
+    else { contrast = Math.round(contrast * 100); }
+    output("contrast", contrast);
 }
 
 function fullscreen() {
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();
+        document.getElementById("fullscreen").innerHTML = "退出";
     }
-    else { document.exitFullscreen(); }
+    else {
+        document.exitFullscreen();
+        document.getElementById("fullscreen").innerHTML = "全屏";
+    }
 }
 
-function update(nextSubject, nextStart, nextEnd) {
+function $(nextSubject, nextStart, nextEnd) {
     if (now > end) {
         subject = nextSubject;
         start = new Date(nextStart);
@@ -31,14 +49,16 @@ function update(nextSubject, nextStart, nextEnd) {
     }
 }
 
-function getMM(i) {
-    i = i.getMinutes();
-    if (i < 10) { i = "0" + i; }
-    return i;
+function preZero(num, digit) {
+    return ("0".repeat(digit) + num).slice(-digit);
+}
+
+function getClock(time) {
+    return time.getHours() + ":" + preZero(time.getMinutes(), 2);
 }
 
 function minTimer(i) {
-    return Math.round(i / 60000) + '<span class="half">min</span>';
+    return Math.round(i / 60000) + '<span class="small">min</span>';
 }
 
 function output(id, value) {
@@ -47,40 +67,38 @@ function output(id, value) {
 
 function examTimer() {
     now = new Date();
-    // console.log(typename);
     switch (type) {
         case "高二理科":
-            update("理科数学", "2021-04-29T14:00", "2021-04-29T16:00");
-            update("物理", "2021-04-29T16:30", "2021-04-29T18:10");
-            update("语文", "2021-04-30T07:40", "2021-04-30T10:10");
-            update("生物", "2021-04-30T10:40", "2021-04-30T12:10");
-            update("英语", "2021-04-30T14:00", "2021-04-30T16:00");
-            update("化学", "2021-04-30T16:30", "2021-04-30T18:10");
+            $("数学", "2021-04-29T14:00", "2021-04-29T16:00");
+            $("物理", "2021-04-29T16:30", "2021-04-29T18:10");
+            $("语文", "2021-04-30T07:40", "2021-04-30T10:10");
+            $("生物", "2021-04-30T10:40", "2021-04-30T12:10");
+            $("英语", "2021-04-30T14:00", "2021-04-30T16:00");
+            $("化学", "2021-04-30T16:30", "2021-04-30T18:10");
             break;
         case "高二文科":
-            update("文科数学", "2021-04-29T14:00", "2021-04-29T16:00");
-            update("历史", "2021-04-29T16:30", "2021-04-29T18:10");
-            update("语文", "2021-04-30T07:40", "2021-04-30T10:10");
-            update("地理", "2021-04-30T10:40", "2021-04-30T12:20");
-            update("英语", "2021-04-30T14:00", "2021-04-30T16:00");
-            update("政治", "2021-04-30T16:30", "2021-04-30T18:10");
+            $("数学", "2021-04-29T14:00", "2021-04-29T16:00");
+            $("历史", "2021-04-29T16:30", "2021-04-29T18:10");
+            $("语文", "2021-04-30T07:40", "2021-04-30T10:10");
+            $("地理", "2021-04-30T10:40", "2021-04-30T12:20");
+            $("英语", "2021-04-30T14:00", "2021-04-30T16:00");
+            $("政治", "2021-04-30T16:30", "2021-04-30T18:10");
             break;
         case "高一":
-            update("语文", "2021-04-29T07:50", "2021-04-29T09:50");
-            update("英语", "2021-04-29T10:20", "2021-04-29T12:00");
-            update("数学", "2021-04-29T14:00", "2021-04-29T15:40");
-            update("生物", "2021-04-29T16:10", "2021-04-29T17:40");
-            update("史地", "2021-04-30T07:50", "2021-04-30T09:50");
-            update("化学", "2021-04-30T10:20", "2021-04-30T12:00");
-            update("物理", "2021-04-30T14:00", "2021-04-30T15:40");
-            update("政治", "2021-04-30T16:10", "2021-04-30T17:10");
+            $("语文", "2021-04-29T07:50", "2021-04-29T09:50");
+            $("英语", "2021-04-29T10:20", "2021-04-29T12:00");
+            $("数学", "2021-04-29T14:00", "2021-04-29T15:40");
+            $("生物", "2021-04-29T16:10", "2021-04-29T17:40");
+            $("史地", "2021-04-30T07:50", "2021-04-30T09:50");
+            $("化学", "2021-04-30T10:20", "2021-04-30T12:00");
+            $("物理", "2021-04-30T14:00", "2021-04-30T15:40");
+            $("政治", "2021-04-30T16:10", "2021-04-30T17:10");
             break;
         default:
-            update("无科目", "2003-09-24", "2003-09-24");
+            $("无科目", "2003-09-24", "2003-09-24");
     }
-    duration = start.getHours() + ":" + getMM(start) +
-        "~" + end.getHours() + ":" + getMM(end);
-    time = now.getHours() + ":" + getMM(now);
+    duration = getClock(start) + "~" + getClock(end);
+    clock = getClock(now);
     if (now < (start - 12E5)) {
         timer = minTimer(start - 12E5 - now);
         next = "距离入场";
@@ -96,9 +114,10 @@ function examTimer() {
         next = "距离开考";
         progress = 0;
     } else if (now > end) {
-        tell = "假期愉快。我们都是上学人。"
+        // tell = "假期愉快。我们都是上学人。"
         // + "<br>建议可向 QQ 2399052066 反馈"
         // + "<br>意见可向高二年级张主任反馈"
+        // output("tell", tell);
         timer = "Nice";
         next = "已结束"
         progress = 100;
@@ -107,14 +126,12 @@ function examTimer() {
         next = "距离结束";
         progress = (now - start) / (end - start) * 100;
     }
-    output("type", type);
     document.getElementById("bar").style.width = progress + "%";
     // output("progress", Math.round(progress)+"%");
     output("subject", subject);
     output("duration", duration);
-    output("time", time);
+    output("clock", clock);
     output("timer", timer);
     output("next", next);
-    output("tell", tell);
-    setTimeout(examTimer, 1000);
+    setTimeout(examTimer, 5000);
 }
