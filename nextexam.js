@@ -1,7 +1,7 @@
 onload = change("高二理科");
 
 oncontextmenu = onkeydown = onselectstart
-// = function () { return false; }
+= function () { return false; }
 
 function change(i) {
     end = 0;
@@ -14,10 +14,22 @@ function change(i) {
     setTimeout(examTimer, 100);
 }
 
-function setFontSize(size) {
-    document.getElementsByClassName("container")[0].style.fontSize = size;
+function relVal(prop, delta, minVal, maxVal) {
+    eleMain = document.getElementsByClassName("container")[0];
+    switch (prop) {
+        case "fontSize":
+            propVal = Math.round(Number(eleMain.style[prop].replace("%", "")) + delta);
+            break;
+        case "opacity":
+            propVal = Math.round(Number(eleMain.style[prop]) * 100 + delta);
+            break;
+    }
+    propVal = Math.max(propVal, minVal);
+    propVal = Math.min(propVal, maxVal);
+    eleMain.style[prop] = propVal + "%";
+    output(prop, propVal);
 }
-
+/*
 function adjustContrast(delta) {
     eleContainer = document.getElementsByClassName("container")[0];
     contrast = Number(eleContainer.style.opacity) + delta;
@@ -29,7 +41,7 @@ function adjustContrast(delta) {
     else { contrast = Math.round(contrast * 100); }
     output("contrast", contrast);
 }
-
+*/
 function fullscreen() {
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();

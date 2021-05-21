@@ -31,12 +31,6 @@ html {
     z-index: 1;
 }
 
-mark {
-    background: none;
-    float: right;
-    border-radius: 0.2em;
-}
-
 .dim {
     font-size: 0.8em;
     opacity: 0.6;
@@ -74,6 +68,16 @@ mark {
 .hilit *,
 .dropdown>ul * {
     color: dimgray;
+}
+
+.selectbar {
+    background: #ccc;
+    color: black;
+    float: right;
+    border-radius: 0.2em;
+    min-width: 4em;
+    display: flex;
+    justify-content: space-between;
 }
 
 .bar {
