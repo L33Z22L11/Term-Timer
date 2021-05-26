@@ -1,56 +1,32 @@
-onload = change("高二理科");
+﻿onload = change("高二理科");
 
-oncontextmenu = onkeydown = onselectstart
-= function () { return false; }
+oncontextmenu = onkeydown = onselectstart = function () { return false; }
 
 function change(i) {
+    now = new Date("2021-05-28T07:10");
     end = 0;
     progress = 0;
-    tell = "电脑时间存在误差，仅供参考，请以实际铃声为准。";
-    output("tell", tell)
+    order = 0;
+    tell = ["电脑时间存在误差，仅供参考，请以实际铃声为准。"];
+
     type = i;
     console.log(type);
     output("type", type);
-    setTimeout(examTimer, 100);
+    String(location).indexOf("\?") == -1 ? updateClock() : check();
 }
 
-function relVal(prop, delta, minVal, maxVal) {
-    eleMain = document.getElementsByClassName("container")[0];
-    switch (prop) {
-        case "fontSize":
-            propVal = Math.round(Number(eleMain.style[prop].replace("%", "")) + delta);
-            break;
-        case "opacity":
-            propVal = Math.round(Number(eleMain.style[prop]) * 100 + delta);
-            break;
-    }
-    propVal = Math.max(propVal, minVal);
-    propVal = Math.min(propVal, maxVal);
-    eleMain.style[prop] = propVal + "%";
-    output(prop, propVal);
+function updateClock() {
+    now = new Date();
+    output("clock", getClock(now));
+    examTimer();
+    setTimeout(updateClock, 2000);
 }
-/*
-function adjustContrast(delta) {
-    eleContainer = document.getElementsByClassName("container")[0];
-    contrast = Number(eleContainer.style.opacity) + delta;
-    if (contrast < 0.5) { contrast = 0.5; }
-    if (contrast > 1) { contrast = 1; }
-    eleContainer.style.opacity = String(contrast);
-    console.log(contrast);
-    if (contrast == 0.75) { contrast = "默认"; }
-    else { contrast = Math.round(contrast * 100); }
-    output("contrast", contrast);
-}
-*/
-function fullscreen() {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-        document.getElementById("fullscreen").innerHTML = "退出";
-    }
-    else {
-        document.exitFullscreen();
-        document.getElementById("fullscreen").innerHTML = "全屏";
-    }
+
+function check() {
+    now.setSeconds(now.getSeconds() + 20);
+    output("clock", getClock(now));
+    examTimer();
+    setTimeout(check, 20);
 }
 
 function $(nextSubject, nextStart, nextEnd) {
@@ -61,15 +37,15 @@ function $(nextSubject, nextStart, nextEnd) {
     }
 }
 
-function preZero(num, digit) {
+function add0Prefix(num, digit) {
     return ("0".repeat(digit) + num).slice(-digit);
 }
 
-function getClock(time) {
-    return time.getHours() + ":" + preZero(time.getMinutes(), 2);
+function getClock(date) {
+    return date.getHours() + ":" + add0Prefix(date.getMinutes(), 2);
 }
 
-function minTimer(i) {
+function formatMin(i) {
     return Math.round(i / 60000) + '<span class="small">min</span>';
 }
 
@@ -78,72 +54,101 @@ function output(id, value) {
 }
 
 function examTimer() {
-    now = new Date();
     switch (type) {
         case "高二理科":
-            $("数学", "2021-04-29T14:00", "2021-04-29T16:00");
-            $("物理", "2021-04-29T16:30", "2021-04-29T18:10");
-            $("语文", "2021-04-30T07:40", "2021-04-30T10:10");
-            $("生物", "2021-04-30T10:40", "2021-04-30T12:10");
-            $("英语", "2021-04-30T14:00", "2021-04-30T16:00");
-            $("化学", "2021-04-30T16:30", "2021-04-30T18:10");
+            $("英语", "2021-05-28T14:20", "2021-05-28T16:20");
+            $("化学", "2021-05-28T16:50", "2021-05-28T18:30");
+            $("语文", "2021-05-29T07:40", "2021-05-29T10:10");
+            $("生物", "2021-05-29T10:40", "2021-05-29T12:10");
+            $("数学", "2021-05-29T14:20", "2021-05-29T16:20");
+            $("物理", "2021-05-29T16:50", "2021-05-29T18:30");
             break;
         case "高二文科":
-            $("数学", "2021-04-29T14:00", "2021-04-29T16:00");
-            $("历史", "2021-04-29T16:30", "2021-04-29T18:10");
-            $("语文", "2021-04-30T07:40", "2021-04-30T10:10");
-            $("地理", "2021-04-30T10:40", "2021-04-30T12:20");
-            $("英语", "2021-04-30T14:00", "2021-04-30T16:00");
-            $("政治", "2021-04-30T16:30", "2021-04-30T18:10");
+            $("英语", "2021-05-28T14:20", "2021-05-28T16:20");
+            $("化学", "2021-05-28T16:50", "2021-05-28T18:30");
+            $("语文", "2021-05-29T07:40", "2021-05-29T10:10");
+            $("政治", "2021-05-29T10:40", "2021-05-29T12:20");
+            $("数学", "2021-05-29T14:00", "2021-05-29T16:00");
+            $("历史", "2021-05-29T16:50", "2021-05-29T18:30");
             break;
         case "高一":
-            $("语文", "2021-04-29T07:50", "2021-04-29T09:50");
-            $("英语", "2021-04-29T10:20", "2021-04-29T12:00");
-            $("数学", "2021-04-29T14:00", "2021-04-29T15:40");
-            $("生物", "2021-04-29T16:10", "2021-04-29T17:40");
-            $("史地", "2021-04-30T07:50", "2021-04-30T09:50");
-            $("化学", "2021-04-30T10:20", "2021-04-30T12:00");
-            $("物理", "2021-04-30T14:00", "2021-04-30T15:40");
-            $("政治", "2021-04-30T16:10", "2021-04-30T17:10");
+            $("未知", "2021-05-28T07:50", "2021-05-28T09:50");
+            $("未知", "2021-05-28T10:20", "2021-05-28T12:00");
+            $("未知", "2021-05-28T14:20", "2021-05-28T16:00");
+            $("未知", "2021-05-28T16:30", "2021-05-28T18:10");
+            $("未知", "2021-05-29T07:50", "2021-05-29T09:50");
+            $("未知", "2021-05-29T10:20", "2021-05-29T12:00");
+            $("未知", "2021-05-29T14:20", "2021-05-29T16:00");
+            $("未知", "2021-05-29T16:30", "2021-05-29T17:30");
             break;
-        default:
-            $("无科目", "2003-09-24", "2003-09-24");
     }
     duration = getClock(start) + "~" + getClock(end);
-    clock = getClock(now);
-    if (now < (start - 12E5)) {
-        timer = minTimer(start - 12E5 - now);
+
+    if (now < (start - 18E5)) {
+        timer = "Soon";
+        next = "考试加油";
+        progress = 0;
+    } else if (now < (start - 12E5)) {
+        timer = formatMin(start - 12E5 - now);
         next = "距离入场";
-        progress = 0;
+        progress = (start - 12E5 - now) / 6E3;
     } else if (now < (start - 6E5)) {
-        timer = minTimer(start - 6E5 - now);
+        timer = formatMin(start - 6E5 - now);
         next = "距离发卡";
+        progress = (start - 6E5 - now) / 6E3;
     } else if (now < (start - 3E5)) {
-        timer = minTimer(start - 3E5 - now);
+        timer = formatMin(start - 3E5 - now);
         next = "距离发卷";
+        progress = (start - 3E5 - now) / 3E3;
     } else if (now < start) {
-        timer = minTimer(start - now);
+        timer = formatMin(start - now);
         next = "距离开考";
-        progress = 0;
-    } else if (now > end) {
-        // tell = "假期愉快。我们都是上学人。"
-        // + "<br>建议可向 QQ 2399052066 反馈"
-        // + "<br>意见可向高二年级张主任反馈"
-        // output("tell", tell);
-        timer = "Nice";
-        next = "已结束"
-        progress = 100;
-    } else {
-        timer = minTimer(end - now);
+        progress = (start - now) / 3E3;
+    } else if (now <= end) {
+        timer = formatMin(end - now);
         next = "距离结束";
         progress = (now - start) / (end - start) * 100;
+    } else {
+        tell = ["本页面托管在纸鹿小站上",
+            "原服务器无法访问，我们已紧急迁移到新服务器",
+            "目前我们可以维持服务器开支",
+            "精神赞助可联系 QQ 2399052066"];
+        subject = "";
+        duration = "";
+        timer = "";
+        next = "";
+        progress = 100;
     }
+
     document.getElementById("bar").style.width = progress + "%";
-    // output("progress", Math.round(progress)+"%");
+    output("tell", tell[order]);
+    order < tell.length - 1 ? order++ : order = 0;
     output("subject", subject);
     output("duration", duration);
-    output("clock", clock);
     output("timer", timer);
-    output("next", next);
-    setTimeout(examTimer, 5000);
+    output("next", next)
+}
+
+/*
+
+*/
+
+function relVal(prop, delta, unit, minVal, maxVal) {
+    eleMain = document.getElementsByClassName("container")[0];
+    propVal = Number(eleMain.style[prop].replace(unit, "")) + delta;
+    propVal = Math.max(propVal, minVal);
+    propVal = Math.min(propVal, maxVal);
+    eleMain.style[prop] = propVal + unit;
+    output(prop, Math.round(propVal * 1E2) / 1E2);
+}
+
+function fullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+        output("fullscreen", "退出");
+    }
+    else {
+        document.exitFullscreen();
+        output("fullscreen", "全屏");
+    }
 }
