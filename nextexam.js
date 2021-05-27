@@ -23,7 +23,7 @@ function updateClock() {
 }
 
 function check() {
-    now.setSeconds(now.getSeconds() + 20);
+    now.setSeconds(now.getSeconds() + 30);
     output("clock", getClock(now));
     examTimer();
     setTimeout(check, 50);
