@@ -26,7 +26,7 @@ function check() {
     now.setSeconds(now.getSeconds() + 20);
     output("clock", getClock(now));
     examTimer();
-    setTimeout(check, 20);
+    setTimeout(check, 50);
 }
 
 function $(nextSubject, nextStart, nextEnd) {
