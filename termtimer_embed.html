@@ -77,9 +77,9 @@
         <span id="s"></span>
         <div>本学期已过去</div>
         <span id="p"></span>%
-        <a class="rtag" target="_blank" href="//h5.zhilu.cyou/termtimer.html?fullscreen"
+        <!--a class="rtag" target="_blank" href="//h5.zhilu.cyou/termtimer.html?fullscreen"
           >⇱ 全屏</a
-        >
+        -->
       </td>
     </table>
   </body>
@@ -87,8 +87,8 @@
     window.onload = clock;
     function clock() {
       var now = new Date();
-      var start = new Date("Feb 26 2021 12:00:00");
-      var end = new Date("Jul 1 2021 0:00:00");
+      var start = new Date("2021-09-01");
+      var end = new Date("2022-06-07");
       var last = now.getTime() - start.getTime(),
         D = parseInt(last / 86400000),
         lastD = last - D * 86400000,
