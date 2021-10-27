@@ -182,7 +182,7 @@
         <span id="tabend">到达尽头惹 =w= 为什么你还在滑 〣( ºΔº )〣 真的没了Σ(っ °Д °;)っ</span>
       </div>
 
-      <div class="c box">
+<!--       <div class="c box">
         <div class="ib">
           <p class="c">在家学习</p>
           <p class="c ff"><span id="hd">出</span> 天</p>
@@ -197,7 +197,7 @@
           <p class="c">高三返校</p>
           <p class="c ff"><span id="thd">了</span> 天</p>
         </div>
-      </div>
+      </div> -->
 
       <div class="box"> 
         <p>22届高考倒计时</p>
@@ -220,7 +220,7 @@
 
       <div class="box" style="position:relative;">
         <div id="bar" style="width=14%;"></div>
-        <p>2020-2021学年度第二学期预计进度</p>
+        <p>2021-2022学年度第一学期预计进度</p>
         <p class="c fff">
           <span id="pi">纸鹿</span> . <span id="pd">不清楚</span> %
         </p>
@@ -263,40 +263,40 @@
         if (platform.match("Win")) {
           tabswitch();
         }
-        home();
-        ststart();
-        rdstart();
+//         home();
+//         ststart();
+//         rdstart();
         cd();
         progress();
       }
 
-      function home() {
-        var start = new Date("Jan 20 2020");
-        var now = new Date();
-        // var exam = new Date("Jul 1 2020 0:00:00");
-        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
-        document.getElementById("hd").innerHTML = 16; // days;
-        // setTimeout(home, 6000);
-      }
+//       function home() {
+//         var start = new Date("Jan 20 2020");
+//         var now = new Date();
+//         // var exam = new Date("Jul 1 2020 0:00:00");
+//         var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10);
+//         document.getElementById("hd").innerHTML = 16; // days;
+//         // setTimeout(home, 6000);
+//       }
 
-      function ststart() {
-        var start = new Date("Feb 17 2021");
-        var now = new Date();
-        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10) + 1;
-        document.getElementById("bd").innerHTML = days;
-        setTimeout(ststart, 6000);
-      }
+//       function ststart() {
+//         var start = new Date("Feb 17 2021");
+//         var now = new Date();
+//         var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10) + 1;
+//         document.getElementById("bd").innerHTML = days;
+//         setTimeout(ststart, 6000);
+//       }
 
-      function rdstart() {
-        var start = new Date("Feb 15 2021");
-        var now = new Date();
-        var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10) + 1;
-        document.getElementById("thd").innerHTML = days;
-        setTimeout(rdstart, 6000);
-      }
+//       function rdstart() {
+//         var start = new Date("Feb 15 2021");
+//         var now = new Date();
+//         var days = parseInt((now - start) / 1000 / 60 / 60 / 24, 10) + 1;
+//         document.getElementById("thd").innerHTML = days;
+//         setTimeout(rdstart, 6000);
+//       }
 
       function cd() {
-        var last = new Date("Jun 7 2022") - new Date();
+        var last = new Date("2022-06-07") - new Date();
         var days = parseInt(last / 1000 / 60 / 60 / 24, 10);
         var hours = parseInt((last / 1000 / 60 / 60) % 24, 10);
         var minutes = parseInt((last / 1000 / 60) % 60, 10);
@@ -309,9 +309,9 @@
       }
 
       function progress() {
-        var preStart = new Date("Feb 27 2021 10:00");
+        var preStart = new Date("2021-09-01");
         var now = new Date();
-        var preEnd = new Date("Jun 30 2021 17:30");
+        var preEnd = new Date("2022-06-07");
         var ratio = ((now - preStart) / (preEnd - preStart)) * 100;
         var pi = parseInt(ratio);
         var pd = parseInt((ratio * 100000) % 100000);
