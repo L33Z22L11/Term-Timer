@@ -150,9 +150,9 @@
     <div class="container">
       <div class="fr button" id="unfold" onclick="tabswitch()">v</div>
       <div class="c" id="tab">
-        <a href="//bjzx.com.cn" class="button">宝中官网</a>
-        <a href="//h16.zhilu.cyou" class="button">22届16班官网</a>
-        <a href="//bjzx.zhilu.cyou" class="button">线上教学资源站</a>
+        <a href="//www.baozhong.com.cn" class="button">宝中官网</a>
+        <a href="//16.thisis.host" class="button">22届16班官网</a>
+        <a href="//book.thisis.host" class="button">电子课本站</a>
         <!--<a href="//class16.baklib-free.com" class="button">16博客</a>
         <a href="//l33z22l11.gitee.io/app16/wk.jpg" class="button">课程表</a>
         <a href="//h5.zhilu.cyou/app/16.apk" class="button"
@@ -161,24 +161,10 @@
         <a href="//h5.zhilu.cyou/app/wk.apk" class="button"
           ><u>⬇</u> 宝中网课APP</a
         >-->
-        <a
-          href="//wpa.qq.com/msgrd?v=3&amp;uin=2399052066&amp;site=qq&amp;menu=yes"
-          class="hlbutton button"
-          >
-          <img
-            src="//thirdqq.qlogo.cn/g?b=qq&amp;nk=2399052066&amp;s=2"
-            />
-        纸鹿QQ +</a
-        >
-        <a
-          href="//jq.qq.com/?_wv=1027&k=DVqpNNji"
-          class="hlbutton button"
-          >
-          <img
-            src="//p.qlogo.cn/gh/894656456/894656456/100"
-            />
-        宝中摸鱼技术群 +</a
-        >
+        <a href="//wpa.qq.com/msgrd?v=3&amp;uin=2399052066&amp;site=qq&amp;menu=yes" class="hlbutton button">
+          <img src="//thirdqq.qlogo.cn/g?b=qq&amp;nk=2399052066&amp;s=2">纸鹿QQ +</a>
+        <a href="//jq.qq.com/?_wv=1027&k=DVqpNNji" class="hlbutton button">
+          <img src="//p.qlogo.cn/gh/894656456/894656456/100">宝中摸鱼技术群 +</a>
         <span id="tabend">到达尽头惹 =w= 为什么你还在滑 〣( ºΔº )〣 真的没了Σ(っ °Д °;)っ</span>
       </div>
 
@@ -311,7 +297,7 @@
       function progress() {
         var preStart = new Date("2021-09-01");
         var now = new Date();
-        var preEnd = new Date("2022-06-07");
+        var preEnd = new Date("2022-01-26");
         var ratio = ((now - preStart) / (preEnd - preStart)) * 100;
         var pi = parseInt(ratio);
         var pd = parseInt((ratio * 100000) % 100000);
@@ -327,7 +313,7 @@
       }
     
       function surZero(num, digit) { // 有bug，别用
-        return (num + "000000").slice(digit);
+        return (num + "000000").slice(0,digit);
       }
 
       function tabswitch() {
