@@ -1,0 +1,115 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+  text-shadow: 2px 2px 2px var(--shadow);
+}
+:root {
+  --auto-color: #444;
+  --light-color: #fff;
+  --primary-color: #4bf;
+  --accent-color: #07f;
+  --dark-color: #87f;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+html {
+  width: 100%;
+  min-height: 100%;
+  background: #eee;
+  color: var(--auto-color);
+  font-size: 100%;
+}
+a {
+  color: var(--auto-color);
+  text-decoration: none;
+}
+.nmg {
+  margin: 0 !important;
+}
+.c {
+  text-align: center;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.ib {
+  display: inline-block;
+}
+#tab {
+  word-break: break-all;
+  white-space: nowrap;
+  overflow: scroll;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.right-bottom {
+  position: fixed;
+  z-index: 924;
+  right: 8%;
+  bottom: 10%;
+}
+/*纸鹿-分割线-box*/
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 720px;
+}
+.container > * {
+  margin: 0.8em auto;
+}
+.banner {
+  padding: 5em 1em 1em;
+  background: linear-gradient(120deg, var(--primary-color), var(--dark-color));
+  color: var(--light-color);
+}
+.box {
+  padding: 0.8em 1.2em;
+  display: block;
+  background: linear-gradient(120deg, var(--primary-color), var(--dark-color));
+  border-radius: 1.5em;
+  box-shadow: var(--shadow) 0.2em 0.2em 0.5em;
+  color: var(--light-color);
+  overflow: hidden;
+}
+.ff span {
+  font-size: 150%;
+  font-weight: bolder;
+}
+.fff span {
+  font-size: 250%;
+  font-weight: bolder;
+}
+.button {
+  margin: 0.2em;
+  padding: 0.1em 0.5em;
+  display: inline-block;
+  background: var(--shadow);
+  color: var(--light-color);
+  border-radius: 924em;
+  text-shadow: none;
+}
+.hlbutton {
+  background: var(--light-color);
+  color: var(--primary-color);
+  /* border: .2em solid var(--light-color); */
+  box-shadow: var(--shadow) 0.2em 0.2em 0.5em;
+}
+.button > img {
+  height: 1em;
+  width: 1em;
+  border-radius: 0.5;
+}
+#bar {
+  margin: 0 !important;
+  position: absolute;
+  background: var(--shadow);
+  height: 100%;
+  right: 0;
+  top: 0;
+  /*white-space: nowrap; */
+}
