@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  cursor: pointer;
+  transition: .5s;
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: #37f;
+}
+
+:root {
+  font-family: PingFang SC, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #445;
+  background: #f7fbff;
+}
+
+#card {
+  position: relative;
+
+  margin: 1rem;
+  padding: .5rem 2rem;
+  transition: all .5s;
+  border: 1px solid #eef;
+  border-radius: 1rem;
+  background: #fff;
+}
+
+#card:hover {
+  box-shadow: 0 0 1rem #eef;
+}
+
+h2,
+p,
+#card>* {
+  margin: .8rem 0;
+}
+
+p.dim {
+  color: #aab;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1em;
+}
+
+.headimg {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  background-image: url(http://thirdqq.qlogo.cn/g?b=qq&nk=2399052066&s=4);
+  background-size: cover;
+}
+
+@media (max-width:480px) {
+  .flex-between {
+    flex-direction: column-reverse;
+  }
+}
