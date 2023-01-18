@@ -1,0 +1,12 @@
+<script>
+  // 你可以在这个页面自拟一个可以校验通过的flag
+  flag = prompt('Enter flag').slice(5, -1);
+  str = flag.split('-');
+  userid = atob('L' + str[0] + 'Lg==').slice(1, -1);
+  time = new Date(parseInt(str[1].slice(1), 36) * 1000 / 97 + 1617206400000);
+  if (str[1][0] != str[0].slice(-4, -3) || parseInt(str[1].slice(1), 36) % 97)
+    time += '(invalid)';
+  token = (parseInt(str[2].slice(1), 36)).toString(16);
+  if (str[2][str[2].length - 1] != str[0].slice(2, 3)) token += '(invalid)';
+  alert('用户名：' + userid + "\n完成时间：" + time + "\n" + "token：" + token);
+</script>

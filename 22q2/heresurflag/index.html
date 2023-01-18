@@ -1,0 +1,16 @@
+<script>
+  function r() { return ~~(Math.random() * 6); }
+  a = prompt('Enter your appkey');
+  try { username = atob('L' + a + 'Lg==').slice(1, -1); }
+  catch (e) { alert("Invalid appkey!") }
+  alert("Welcome, " + username)
+  b = r();
+  c = r();
+  d = r();
+  e = r();
+  f = b + c * Math.pow(d, e);
+  if (prompt('plus(' + b + ',multiple(' + c + ',power(' + d + ',' + e + ')))') == f) {
+    g = a.slice(-4, -3) + ((~~(Date.now() / 1000) - 1617206400) * 97).toString(36);
+    alert('flag{' + a + '-' + g + '-' + (~~(Math.random() * 10e7)).toString(36) + a.slice(2, 3) + '}');
+  } else { alert('Wrong answer!') }
+</script>

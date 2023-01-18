@@ -1,0 +1,30 @@
+html {
+    font: 18px sans-serif;
+    color: #eee;
+    background: #333;
+    text-shadow: 1px 2px .5em #222;
+}
+
+body {
+    width: 90vw;
+    max-width: 1024px;
+    margin: auto;
+}
+
+a{
+    text-decoration: none;
+    color: #7fd;
+}
+
+a::before{
+    content: "🔗";
+}
+
+code {
+    font-family: Consolas, monospace;
+    margin: 0 .1em;
+    padding: 0 .1em;
+    border: .1px solid #222;
+    border-radius: .2em;
+    background: #555;
+}

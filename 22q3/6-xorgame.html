@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="22q3.css">
+    <title>TECHYES 22Q3</title>
+</head>
+
+<body>
+    <h1>0x06 xorgame</h1>
+    <div id="xorgame">
+        <code id="0">𝟭</code>
+        <code id="1">𝟬</code>
+        <code id="2">𝟭</code>
+        <code id="3">𝟬</code>
+        <code id="4">𝟬</code>
+        <code id="5">𝟭</code>
+        <code id="6">𝟬</code>
+    </div>
+    <h6>By Zhilu & Bandaoworld</h6>
+</body>
+
+<script>
+    xorlist = document.getElementById("xorgame").children;
+    function xor(ele) {
+        if (ele.innerHTML == "𝟬") { ele.innerHTML = "𝟭"; }
+        else if (ele.innerHTML == "𝟭") { ele.innerHTML = "𝟬"; }
+
+    }
+    for (i in xorlist) {
+        xorlist[i].onclick = function (e) {
+            myId = parseInt(e.target.id)
+            console.log(myId);
+            if (myId != 0) { xor(xorlist[myId - 1]); }
+            xor(xorlist[myId]);
+            if (myId != xorlist.length - 1) { xor(xorlist[myId + 1]); }
+            if (xorlist) {
+                firstItem = xorlist[0].innerHTML;
+                var flag = true;
+                for (let i = 0; i < xorlist.length; i++) {
+                    if (xorlist[i].innerHTML != firstItem) { flag = false; }
+                }
+                if (flag) { alert("下一关仍在开发中（可能彻底鸽了）"); }
+            }
+        }
+    }
+
+
+
+</script>
+
+</html>

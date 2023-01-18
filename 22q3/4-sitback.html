@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="22q3.css">
+    <title>TECHYES 22Q3</title>
+</head>
+
+<body>
+    <h1>0x04 Sit back and relax.</h1>
+    <progress id="prog" value="0" max="10000"></progress>
+    <span id="tag">0%</span>
+</body>
+
+<script>
+    prog = document.getElementById("prog");
+    tag = document.getElementById("tag");
+    prog.onclick = function (e) { prog.value = e.offsetX * 10000 / prog.clientWidth; }
+    !function update() {
+        if (prog.value > 9999) {
+            alert("visit 2e2f352d6e6f2d706172616d2e68746d6c");
+            tag.innerHTML = "100%";
+        }
+        else {
+            tag.innerHTML = ~~(prog.value = prog.value + 2) / 100 + "%";
+            setTimeout(update, 100);
+        }
+    }();
+</script>
+
+</html>
