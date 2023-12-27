@@ -1,0 +1,44 @@
+.space-evenly {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#unencodedText,
+#undecodedText {
+    width: calc(100vw - 8em);
+    height: 5em;
+}
+
+#encodedResult,
+#decodedResult {
+    overflow: auto;
+
+    max-height: 10em;
+    word-wrap: break-word;
+}
+
+#tree {
+    overflow: auto;
+}
+
+.node {
+    display: inline-block;
+    margin: 0 auto;
+    vertical-align: top;
+    white-space: pre;
+}
+
+.node>p {
+    margin: .1em;
+    padding: 0 .2em;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: .5em;
+}
+
+[data-sub]::after {
+    font-size: .5em;
+    display: block;
+    content: attr(data-sub);
+    opacity: .5;
+}
