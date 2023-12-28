@@ -13,16 +13,17 @@ if (process.argv.length > 2) {
         const undcodedContent = [...fs.readFileSync(fileName + '.encoded.bin', 'hex')]
             .map(hex => parseInt(hex, 16).toString(2).padStart(4, '0')).join('') + undcodedData.remainder;
         const decodedContent = core.decode(undcodedContent, Object.entries(undcodedData.encodingTable));
-        fs.writeFileSync(fileName + '.decoded', decodedContent, 'utf8');
+        fs.writeFileSync(fileName + '.decoded', decodedContent, undcodedData.charset);
         console.log(`文件 ${fileName} 解码成功，位于 ${fileName}.decoded`);
     } else {
         // 编码模式
-        const fileContent = fs.readFileSync(filePath, 'utf8');
+        const fileContent = fs.readFileSync(filePath, process.argv[3] || 'binary');
         const encodingTable = core.buildEncodingTable(core.buildHuffmanTree(fileContent));
         const encodedContent = core.encode(fileContent, encodingTable);
         fs.writeFileSync(filePath + '.encoded.json', JSON.stringify({
-            encodingTable: Object.fromEntries([...encodingTable]),
+            charset: process.argv[3] || 'binary',
             remainder: encodedContent.slice(-encodedContent.length % 8),
+            encodingTable: Object.fromEntries(encodingTable.entries()),
         }), 'utf8');
         let payload = '';
         for (let i = 0; i < encodedContent.length - 7; i += 8)

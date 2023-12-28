@@ -13,10 +13,7 @@ const decodedResult = document.getElementById('decodedResult');
 encodeButton.addEventListener('click', () => {
     const huffmanTree = buildHuffmanTree(unencodedText.value);
     const encodingTable = buildEncodingTable(huffmanTree);
-    const encodedContent = encode(unencodedText.value, encodingTable);
-    encodedResult.innerHTML = `
-        编码表: ${JSON.stringify([...encodingTable])} <br>
-        编码结果: ${encodedContent}`;
+    encodedResult.textContent = `编码表:\n${JSON.stringify([...encodingTable])}\n编码结果:\n${encode(unencodedText.value, encodingTable)}`;
     eleTree.innerHTML = '<p>哈夫曼树:</p>';
     eleTree.appendChild(createVisualNode(huffmanTree));
 });
@@ -24,17 +21,14 @@ encodeButton.addEventListener('click', () => {
 // 添加解码按钮点击事件处理程序
 decodeButton.addEventListener('click', () => {
     const undecodedInfo = undecodedText.value.split('\n');
-    const undecodedContent = undecodedInfo[1].slice(6);
-    const encodingTable = JSON.parse(undecodedInfo[0].slice(5));
-    const decodedContent = decode(undecodedContent, encodingTable);
-    decodedResult.textContent = `解码结果: ${decodedContent}`;
+    decodedResult.textContent = `解码结果:\n${decode(undecodedInfo[3], JSON.parse(undecodedInfo[1]))}`;
 });
 
 // 递归创建图形化节点
 function createVisualNode(node) {
     const div = document.createElement('div');
     div.className = 'node';
-    div.innerHTML = node ? `<p data-sub="${node.frequency}">${node.char || ' '}</p>` : '<p>空</p>';
+    div.innerHTML = `<p data-sub="${node.frequency}">${node.char || ' '}</p>`;
     if (node.left || node.right) {
         div.appendChild(createVisualNode(node.left));
         div.appendChild(createVisualNode(node.right));

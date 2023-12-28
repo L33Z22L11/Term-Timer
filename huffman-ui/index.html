@@ -15,17 +15,16 @@
         <textarea id="unencodedText" placeholder="输入要编码的字符串"></textarea>
         <button id="encodeButton">编码</button>
     </div>
-    <p id="encodedResult"></p>
+    <pre id="encodedResult"></pre>
     <div id="tree"></div>
 
     <h2>解码</h2>
     <div class="space-evenly">
-        <textarea id="undecodedText" placeholder='输入经过编码的信息, 例如：
-编码表: [["H","00"],["e","01"],["o","10"],["l","11"]]
-编码结果: 0001111110'></textarea>
+        <textarea id="undecodedText"
+            placeholder='输入经过编码的信息, 例如：&#13;&#10;编码表:&#13;&#10;[["H","00"],["e","01"],["o","10"],["l","11"]]&#13;&#10;编码结果:&#13;&#10;0001111110'></textarea>
         <button id="decodeButton">解码</button>
     </div>
-    <p id="decodedResult"></p>
+    <pre id="decodedResult"></pre>
 </body>
 
 <script src="./static/core.js"></script>

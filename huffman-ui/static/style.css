@@ -6,15 +6,15 @@
 #unencodedText,
 #undecodedText {
     width: calc(100vw - 8em);
-    height: 5em;
+    height: 6em;
 }
 
 #encodedResult,
 #decodedResult {
     overflow: auto;
-
-    max-height: 10em;
+    max-height: 12em;
     word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 #tree {
@@ -37,7 +37,7 @@
 }
 
 [data-sub]::after {
-    font-size: .5em;
+    font-size: .3em;
     display: block;
     content: attr(data-sub);
     opacity: .5;
