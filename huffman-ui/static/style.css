@@ -1,24 +1,78 @@
-.space-evenly {
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Sarasa Gothic', 'PingFang SC', sans-serif;
+    background: #f7faff;
+}
+
+body {
+    width: 90vw;
+    margin: 0 auto;
+    color: #334;
+}
+
+h1,
+h2 {
+    margin: .5rem 0;
+}
+
+code,
+pre,
+textarea,
+.node {
+    font-family: 'Cascadia Code', 'Sarasa Gothic', 'PingFang SC';
+}
+
+
+.space-between {
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#unencodedText,
-#undecodedText {
-    width: calc(100vw - 8em);
-    height: 6em;
+a.btn {
+    display: inline-block;
+    padding: .1em .3em;
+    cursor: pointer;
+    color: #fff;
+    border-radius: .3em;
+    background: #37f;
 }
 
-#encodedResult,
-#decodedResult {
+.card {
+    margin: 1rem 0;
+    border-radius: .5em;
+    background: #fff;
+    box-shadow: .1em .2em .5em rgba(63, 63, 63, .1);
+}
+
+.card>*,
+#HuffmanTree>.node {
+    padding: 1rem;
+}
+
+#inputText {
+    width: 100%;
+    height: 12em;
+}
+
+#result {
+    font-size: .8em;
+
     overflow: auto;
-    max-height: 12em;
-    word-wrap: break-word;
+    max-height: 15em;
     white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
-#tree {
+#HuffmanTree {
     overflow: auto;
+
+    padding: 0;
+    text-align: center;
 }
 
 .node {
@@ -28,16 +82,26 @@
     white-space: pre;
 }
 
-.node>p {
+.node> :first-child {
     margin: .1em;
     padding: 0 .2em;
+    transition: .2s;
     text-align: center;
-    border: 1px solid black;
-    border-radius: .5em;
+    border-radius: .3em;
+    background: #fff;
+
+    /* border: 1px solid #e0eaef; */
+    box-shadow: .1em .2em .5em rgba(63, 63, 63, .1);
+}
+
+.node> :first-child:hover {
+    color: #fff;
+    background: #37f;
+    box-shadow: .1em .2em .5em rgba(0, 127, 255, .2);
 }
 
 [data-sub]::after {
-    font-size: .3em;
+    font-size: .5em;
     display: block;
     content: attr(data-sub);
     opacity: .5;

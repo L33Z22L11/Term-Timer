@@ -20,9 +20,9 @@ function buildHuffmanTree(string) {
         nodes.push(new HuffmanNode(char, frequency));
     // 处理只包含一个字符的情况
     if (nodes.length === 1) {
-        const singleNode = nodes[0];
-        const root = new HuffmanNode(null, singleNode.frequency);
-        root.left = singleNode;
+        const root = new HuffmanNode(null, nodes[0].frequency);
+        root.left = nodes[0];
+        root.right = new HuffmanNode(' ', 0);
         return root;
     }
     // 构建哈夫曼树
