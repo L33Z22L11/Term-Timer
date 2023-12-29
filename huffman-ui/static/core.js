@@ -21,8 +21,7 @@ function buildHuffmanTree(string) {
     // 处理只包含一个字符的情况
     if (nodes.length === 1) {
         const root = new HuffmanNode(null, nodes[0].frequency);
-        root.left = nodes[0];
-        root.right = new HuffmanNode(' ', 0);
+        root.left = root.right = nodes[0];
         return root;
     }
     // 构建哈夫曼树

@@ -6,16 +6,7 @@ const rl = require('readline').createInterface({ input: process.stdin, output: p
 // 检查命令行参数
 if (process.argv.length > 2) {
     const filePath = process.argv[2];
-    // 解码模式
-    if (filePath.match('.encoded.')) {
-        let fileName = filePath.split('.encoded.')[0];
-        const undcodedData = JSON.parse(fs.readFileSync(fileName + '.encoded.json', 'utf8'));
-        const undcodedContent = [...fs.readFileSync(fileName + '.encoded.bin', 'hex')]
-            .map(hex => parseInt(hex, 16).toString(2).padStart(4, '0')).join('') + undcodedData.remainder;
-        const decodedContent = core.decode(undcodedContent, Object.entries(undcodedData.encodingTable));
-        fs.writeFileSync(fileName + '.decoded', decodedContent, undcodedData.charset);
-        console.log(`文件 ${fileName} 解码成功，位于 ${fileName}.decoded`);
-    } else {
+    if (!filePath.match('.encoded.')) {
         // 编码模式
         const fileContent = fs.readFileSync(filePath, process.argv[3] || 'binary');
         const encodingTable = core.buildEncodingTable(core.buildHuffmanTree(fileContent));
@@ -30,6 +21,15 @@ if (process.argv.length > 2) {
             payload += parseInt(encodedContent.substr(i, 8), 2).toString(16).padStart(2, "0");
         fs.writeFileSync(filePath + '.encoded.bin', payload, 'hex');
         console.log(`文件 ${filePath} 成功编码至 ${filePath}.encoded.bin, 码表和余量位于 ${filePath}.encoded.json`);
+    } else {
+        // 解码模式
+        let fileName = filePath.split('.encoded.')[0];
+        const undcodedData = JSON.parse(fs.readFileSync(fileName + '.encoded.json', 'utf8'));
+        const undcodedContent = [...fs.readFileSync(fileName + '.encoded.bin', 'hex')]
+            .map(hex => parseInt(hex, 16).toString(2).padStart(4, '0')).join('') + undcodedData.remainder;
+        const decodedContent = core.decode(undcodedContent, Object.entries(undcodedData.encodingTable));
+        fs.writeFileSync(fileName + '.decoded', decodedContent, undcodedData.charset);
+        console.log(`文件 ${fileName} 解码成功，位于 ${fileName}.decoded`);
     }
     process.exit(0);
 }
@@ -37,6 +37,7 @@ if (process.argv.length > 2) {
 // 循环执行交互式文本编码模式
 (function runInteractiveEncoding() {
     rl.question('输入以编码 (按Ctrl-C退出): ', (inputString) => {
+        if (!inputString) { runInteractiveEncoding(); return; }
         const encodingTable = core.buildEncodingTable(core.buildHuffmanTree(inputString));
         const encodedString = core.encode(inputString, encodingTable);
         console.log('编码表:', encodingTable);

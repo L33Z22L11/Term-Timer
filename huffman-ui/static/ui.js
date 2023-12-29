@@ -19,7 +19,7 @@ document.getElementById('decodeButton').addEventListener('click', () => {
     HuffmanTree.innerHTML = '';
     try {
         result.textContent = decode(undecodedInfo[3], JSON.parse(undecodedInfo[1]));
-    } finally { alert('解码失败'); }
+    } catch (e) { result.innerHTML = `<p style="color:#37f">解码失败:\n${e}</p>`; }
 });
 
 // 复制按钮点击事件处理程序
