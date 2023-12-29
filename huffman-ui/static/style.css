@@ -23,7 +23,7 @@ code,
 pre,
 textarea,
 .node {
-    font-family: 'Cascadia Code', 'Sarasa Gothic', 'PingFang SC';
+    font-family: 'Cascadia Code', Consolas, 'Sarasa Gothic', 'PingFang SC';
 }
 
 
@@ -56,21 +56,20 @@ a.btn {
 
 #inputText {
     width: 100%;
-    height: 12em;
+    height: 50vh;
+    min-height: 16em;
 }
 
 #result {
     font-size: .8em;
-
     overflow: auto;
-    max-height: 15em;
+    max-height: 16em;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
 #HuffmanTree {
     overflow: auto;
-
     padding: 0;
     text-align: center;
 }
@@ -83,21 +82,37 @@ a.btn {
 }
 
 .node> :first-child {
+    position: relative;
+    overflow: hidden;
     margin: .1em;
     padding: 0 .2em;
     transition: .2s;
     text-align: center;
     border-radius: .3em;
     background: #fff;
-
-    /* border: 1px solid #e0eaef; */
     box-shadow: .1em .2em .5em rgba(63, 63, 63, .1);
 }
 
-.node> :first-child:hover {
+.node:hover> :first-child {
     color: #fff;
     background: #37f;
     box-shadow: .1em .2em .5em rgba(0, 127, 255, .2);
+}
+
+.node> :first-child::before {
+    font-size: .5em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 .2em;
+}
+
+.node:hover:nth-child(2)> :first-child::before {
+    content: '0';
+}
+
+.node:hover:nth-child(3)> :first-child::before {
+    content: '1';
 }
 
 [data-sub]::after {

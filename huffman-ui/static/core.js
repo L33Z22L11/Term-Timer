@@ -75,4 +75,6 @@ function decode(undecodedString, encodingTable) {
     return decodedString;
 }
 
-try { module.exports = { buildHuffmanTree, buildEncodingTable, encode, decode } } catch { }
+try {
+    module.exports = { buildHuffmanTree, buildEncodingTable, encode, decode }
+} catch (e) { console.log(`可能在浏览器环境中:\n${e}`); }
